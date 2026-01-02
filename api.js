@@ -4,7 +4,7 @@ const sharp = require("sharp");
 
 /* ================= CONFIG ================= */
 
-const PORT = process.env.PORT || 20263;
+const PORT = 8080;
 const CACHE_FILE = "./cache.txt";
 const MAX_DISTANCE = 12;
 
