@@ -32,12 +32,15 @@ function hamming(a, b) {
 
 const CACHE = Object.create(null);
 
-for (const line of fs.readFileSync(CACHE_FILE, "utf8").split("\n")) {
-  const [name, hash] = line.split("|");
-  if (name && hash) CACHE[name] = hash;
+if (fs.existsSync(CACHE_FILE)) {
+  for (const line of fs.readFileSync(CACHE_FILE, "utf8").split("\n")) {
+    const [name, hash] = line.split("|");
+    if (name && hash) CACHE[name] = hash;
+  }
+  console.log("📦 Cache carregado:", Object.keys(CACHE).length);
+} else {
+  console.warn("⚠️ cache.txt não encontrado");
 }
-
-console.log(`📦 Cache carregado: ${Object.keys(CACHE).length}`);
 
 /* ================= IDENTIFY ================= */
 
