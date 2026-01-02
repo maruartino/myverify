@@ -4,7 +4,7 @@ const sharp = require("sharp");
 
 /* ================= CONFIG ================= */
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const CACHE_FILE = "./cache.txt";
 const MAX_DISTANCE = 12;
 
@@ -101,6 +101,6 @@ app.post("/identify", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log("Servidor rodando na porta", PORT);
 });
